@@ -3,17 +3,22 @@
 
 date_default_timezone_set('GMT'); 
 
+session_start();
+
 $lang = 'en_US.UTF-8'; // Dummy
-setlocale(LC_ALL, $lang); 
+setlocale(LC_ALL, $lang);
 
 $locale = "zh_CN";
+if(isset($_SESSION['locale'])){
+    $locale = $_SESSION['locale'];
+}
 putenv("LANGUAGE=$locale");
 setlocale(LC_ALL, $locale);
-#bindtextdomain("messages", "./locale");
-#textdomain("messages");
 
+bindtextdomain("messages", "./locale");
+bind_textdomain_codeset("messages","UTF-8");
+textdomain("messages");
 
-#echo _("nav_home");
 /*
  * Smarty config
  */
@@ -34,8 +39,8 @@ $smarty -> assign("filename",ACTION_PATH);
 $DOC = array(
     "title" => "title",
     "meta" => array(
-        "keywords" => "keywords",
-        "description" => "description"
+	"keywords" => "keywords",
+	"description" => "description"
     )
 );
 
