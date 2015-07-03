@@ -9,11 +9,11 @@ setlocale(LC_ALL, $lang);
 $locale = "zh_CN";
 putenv("LANGUAGE=$locale");
 setlocale(LC_ALL, $locale);
-bindtextdomain("messages", "./locale");
-textdomain("messages");
+#bindtextdomain("messages", "./locale");
+#textdomain("messages");
 
 
-echo _("nav_home");
+#echo _("nav_home");
 /*
  * Smarty config
  */
@@ -29,7 +29,7 @@ $smarty->setConfigDir($root . '/apps/configs');
  */
 $FILENAME = pathinfo($_SERVER['SCRIPT_FILENAME'], PATHINFO_FILENAME);
 
-$smarty -> assign("filename",$FILENAME);
+$smarty -> assign("filename",ACTION_PATH);
 
 $DOC = array(
     "title" => "title",
